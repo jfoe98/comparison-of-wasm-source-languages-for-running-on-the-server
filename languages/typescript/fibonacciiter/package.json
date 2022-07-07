@@ -1,0 +1,27 @@
+{
+  "name": "fibonacciiter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fibonacciiter.ts",
+  "scripts": {
+    "test": "node tests",
+    "asbuild:debug": "asc assembly/index.ts --target debug",
+    "asbuild:release": "asc assembly/index.ts --target release",
+    "asbuild:optimized": "asc assembly/index.ts --target release -O3",
+    "asbuild:unoptimized": "asc assembly/index.ts --target release -O0",
+    "asbuild": "npm run asbuild:debug && npm run asbuild:release",
+    "start": "npx serve ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "assemblyscript": "^0.20.6"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./build/release.js",
+      "types": "./build/release.d.ts"
+    }
+  }
+}

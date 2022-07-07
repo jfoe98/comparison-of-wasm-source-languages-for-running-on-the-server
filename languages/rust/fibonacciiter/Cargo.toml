@@ -1,0 +1,20 @@
+[package]
+name = "fibonacciiter"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+wasm-bindgen = "0.2"
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release-unoptimized]
+inherits = "release"
+opt-level = 0
+
+[profile.release-optimized]
+inherits = "release"
+opt-level = 3

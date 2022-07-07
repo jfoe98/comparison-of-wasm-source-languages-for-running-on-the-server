@@ -1,0 +1,26 @@
+version: "3.1" 
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: Passw0rd
+    volumes:
+      - "./create-table.sql:/docker-entrypoint-initdb.d/1.sql"
+  phymyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: Passw0rd
+  metricsserver:
+    build: ../
+    container_name: metricsserver
+    ports:
+      - 3000:3000
