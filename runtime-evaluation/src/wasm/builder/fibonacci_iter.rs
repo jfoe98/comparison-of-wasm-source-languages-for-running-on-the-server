@@ -13,7 +13,6 @@ impl WasmFunctionBuilder for FibonacciIterativeReactorFunctionBuilder {
         let parameter = workload.size.value;
 
         let function = move |linker: &Linker<WasmExecutionState>, mut store: &mut Store<WasmExecutionState>| {
-            //todo: Fehler abfangen
             let wasm_fun = linker.get(&mut store, "", "fibonacciiter").unwrap().into_func().unwrap().typed::<i32, i64, _>(&store)?;
             let result = wasm_fun.call(&mut store, parameter)?;
 
